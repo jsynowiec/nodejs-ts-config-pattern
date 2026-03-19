@@ -2,13 +2,9 @@
 
 A lightweight, type-safe configuration pattern for Node.js using Zod.
 
----
-
 ## The Problem
 
 Raw `process.env` access gives you `string | undefined` for every value. Defaults end up scattered across the codebase. Validation — if it happens at all — happens at runtime, often far from startup. Multi-environment config becomes a pile of `.env.local` and `.env.test` files that are easy to lose track of.
-
----
 
 ## The Key Insight
 
