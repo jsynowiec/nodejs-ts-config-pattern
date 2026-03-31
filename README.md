@@ -158,6 +158,10 @@ function getConfig() {
 **Limitation:** `node-config` supports file layering (default → env → local), enabling ops teams to override config without code changes. This pattern's production config is code — adding a new env var requires a code change and deploy.
 
 
+### vs. ArkType
+
+[ArkType](https://github.com/arktypeio/arktype) uses a TypeScript-like string syntax and claims 100x faster runtime validation — but neither advantage applies here. Config validation runs once at startup, so performance is irrelevant. This pattern's value rests on the input/output type distinction and explicit discriminated unions: Zod's `z.discriminatedUnion('driver', [...])` names the discriminator key directly, and `z.input<>` / `z.output<>` are well-documented idioms with broad ecosystem support. ArkType's equivalents exist but are less explicit, and its string DSL surfaces typos at runtime where Zod's method chains catch them at compile time.
+
 ## Running the Demo
 
 The demo is a minimal Fastify server with one `POST /orders` endpoint. The Fastify code is glue; the config pattern is the point.
